@@ -30,7 +30,6 @@ Route.group(() => {
 }).prefix('api/v1/todos').middleware(['auth'])
 
 Route.group(() => {
-
     Route.post('/register', 'AuthController.register')
     Route.post('/login', 'AuthController.login')
     Route.get('', 'AuthController.show').middleware('auth')
