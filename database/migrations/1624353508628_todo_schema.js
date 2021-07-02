@@ -9,8 +9,16 @@ class TodoSchema extends Schema {
       table.increments()
       table.string('title').notNullable()
       table.string('description')
+      table.integer('user_id')
+        .references('id')
+        .inTable('users')
       table.timestamps()
     })
+    // this.alter('users', (table) => {
+    //   table.integer('user_id')
+    //     .references('id')
+    //     .inTable('users')
+    // })
   }
 
   down () {
