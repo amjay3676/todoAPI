@@ -35,6 +35,8 @@ class User extends Model {
     
      this.addHook('beforeCreate', 'UserHook.hashPhone')
      this.addHook('afterSave', 'UserHook.DecryptPhone')
+     this.addHook('afterFetch', 'UserHook.DecryptPhone')
+
 
   }
 
