@@ -6,6 +6,8 @@ const { validateAll } = use('Validator')
 
 const Hash = use('Hash')
 
+const Event = use('Event')
+
 class AuthController {
     
   async register ({request, response, auth}){
@@ -34,6 +36,10 @@ class AuthController {
     const user = await User.create(request.only(['name','phone','password']));
     let token = await auth.generate(user)
     Object.assign(user, token)
+
+    //firing a event when user register
+    Event.fire('new::user', user)
+
     return response.json(user)
   }
 
